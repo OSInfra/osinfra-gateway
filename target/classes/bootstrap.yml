@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: osinfra-gateway
+    version: 1.0.0-SNAPSHOT
+  profiles:
+    active: debug
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.sharecloud.tech
+logging:
+  path: ${app.log.path:${user.home}/logs}
+  pattern:  # 增加logging.pattern
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSSZ}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([%t]){faint} %clr(%logger{39}.%M:%L){cyan} %m%n"
