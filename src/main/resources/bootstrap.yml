@@ -1,11 +1,16 @@
 spring:
   application:
-    name: @app.name@
-    version: @project.version@
+    name: '@app.name@'
+    version: '@project.version@'
   profiles:
     active: debug
   cloud:
+    config:
+      enabled: false # 关闭默认condig
     nacos:
+      config:
+        file-extension: yaml
+        server-addr: nacos.sharecloud.tech
       discovery:
         server-addr: nacos.sharecloud.tech
 logging:

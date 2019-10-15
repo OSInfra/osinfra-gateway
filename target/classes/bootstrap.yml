@@ -1,11 +1,16 @@
 spring:
   application:
-    name: osinfra-gateway
-    version: 1.0.0-SNAPSHOT
+    name: 'osinfra-gateway'
+    version: '1.0.0-SNAPSHOT'
   profiles:
     active: debug
   cloud:
+    config:
+      enabled: false # 关闭默认condig
     nacos:
+      config:
+        file-extension: yaml
+        server-addr: nacos.sharecloud.tech
       discovery:
         server-addr: nacos.sharecloud.tech
 logging:

@@ -15,23 +15,24 @@
               value="[%d{yyyy-MM-dd HH:mm:ss.SSS}][%level][%logger{0}][%method][%L][${APP_NAME},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}] - %msg%n"/>
 
     <springProfile name="prod">
-    <appender name="biz-file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}/${APP_NAME}-biz.log</File>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_PATH}/${APP_NAME}-biz.log.%d{yyyy.MM.dd.HH}</FileNamePattern>
-            <maxHistory>7</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <Pattern>${FILE_LOG_PATTERN}</Pattern>
-            <ImmediateFlush>false</ImmediateFlush>
-        </encoder>
-    </appender>
-    <appender name="biz" class="ch.qos.logback.classic.AsyncAppender">
-        <discardingThreshold>0</discardingThreshold>
-        <queueSize>2048</queueSize>
-        <includeCallerData>true</includeCallerData>
-        <appender-ref ref="biz-file"/>
-    </appender>
+        <appender name="biz-file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <File>${LOG_PATH}/${APP_NAME}-biz.log</File>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${LOG_PATH}/${APP_NAME}-biz.log.%d{yyyy.MM.dd.HH}</FileNamePattern>
+                <maxHistory>7</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <Pattern>${FILE_LOG_PATTERN}</Pattern>
+                <ImmediateFlush>false</ImmediateFlush>
+            </encoder>
+        </appender>
+        <appender name="biz" class="ch.qos.logback.classic.AsyncAppender">
+            <discardingThreshold>0</discardingThreshold>
+            <queueSize>2048</queueSize>
+            <includeCallerData>true</includeCallerData>
+            <appender-ref ref="biz-file"/>
+        </appender>
+    </springProfile>
 
     <springProfile name="!prod">
         <appender name="biz" class="ch.qos.logback.core.rolling.RollingFileAppender">
