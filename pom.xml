@@ -46,6 +46,14 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>Maven Repository</name>
+            <url>http://nexus.sharecloud.tech/repository/maven-public/</url>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
