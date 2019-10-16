@@ -13,7 +13,7 @@ addons:
   ssh_known_hosts: $IP:$PORT
 
 script:
-  - mvn clean install -Dmaven.test.skip=true -U
+  - cd osinfra-gateway && mvn clean install -Dmaven.test.skip=true -U
 
 after_success:
   - ssh $USERNAME@$IP -p $PORT sh /home/shell/start.sh
