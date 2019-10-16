@@ -15,8 +15,8 @@ before_install:
 addons:
   ssh_known_hosts: $IP:$PORT
 
-script:
-  - mvn clean install -Dmaven.test.skip=true -U
+#script:
+#  - mvn clean install -Dmaven.test.skip=true -U
 
 after_success:
   - ssh $USERNAME@$IP -o StrictHostKeyChecking=no -p $PORT '/home/shell/start.sh osinfra-gateway'
