@@ -8,8 +8,8 @@ env:
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_45e2ee6d25eb_key -iv $encrypted_45e2ee6d25eb_iv
-  - in id_rsa.enc -out id_rsa -d
-  - chmod 600 id_rsa
+  - in id_rsa.enc -out ~/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
 addons:
   ssh_known_hosts: $IP:$PORT
 
