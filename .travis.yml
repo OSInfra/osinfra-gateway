@@ -19,4 +19,4 @@ addons:
 #  - mvn clean install -Dmaven.test.skip=true -U
 
 after_success:
-  - ssh -T $USERNAME@$IP -o StrictHostKeyChecking=no -p $PORT sh /home/shell/start.sh osinfra-gateway
+  - ssh $USERNAME@$IP -o StrictHostKeyChecking=no -p $PORT '/home/shell/start.sh osinfra-gateway'
