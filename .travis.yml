@@ -7,8 +7,7 @@ env:
     - secure: "I+niGatsyubE6sZ9PRLTyIZstmplB16PoIUjFuCZ9hw/IqeJgWFwWu6Wi2K06g7G++TG5jLyft3Qszyl/6IKO2nTdLZooFf9Ui9dpCOTh//LVuwjndxdIsEBrva7x04r4/oyVDn07dz9EkwCPzyVcDPKTwlgOjSvqxhir8G44vH8n7dIOZXpUms5tgZpRwb99OfAA1FcuT1+Nxc/BOfB7Phk7HuMTOTDS/AjrAk2PqcW3KTtBC+33YfBNhVe3ZzEHBHdd9/pXePXJUgSw44oxbPoXLy9Sc8mLA4IFY2uke8Ua2fotxiIHyR24PNROPhMNCaMNlND6F5tXIav/Y6AEorsBQ+8OonMFniAoumxcfEsDOxLyJ5g8V5cJDTk1pnUt2I1e9odaw2WUB1OiTIm100aAsBaP2hSjrM+Q2FWVMOrpEGUIF+A8XBta5Hws2Pa5/1eFXxG59mrjD6Emkmh/xlJI0rY+dQzSAt6UoO3ZOrj1QQsvPYDMjp1MlkV+3hZkLGOBhHu4ldPjVw5rmYmAiKKpbnt+SL2CisfyLqMmbFvLSU3DBKE8gIP/aVXU2qJVe2yxVCO8meD8aJPMTewl6C1bXNfDCGaFZjxnLwPE4fJU5RSHzLXYWGOS+Pwb4Tdscje4qIlMCjVgj6ofQymxFz/3EmKF0Kuftzx0h65dfQ="
 
 before_install:
-  - openssl aes-256-cbc -K $encrypted_45e2ee6d25eb_key -iv $encrypted_45e2ee6d25eb_iv
-  - in id_rsa.enc -out ~/.ssh/id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_45e2ee6d25eb_key -iv $encrypted_45e2ee6d25eb_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
 addons:
   ssh_known_hosts: $IP:$PORT
