@@ -16,4 +16,4 @@ script:
   - mvn clean install -Dmaven.test.skip=true -U
 
 after_success:
-  - ssh $USERNAME@$IP -p $PORT '/home/shell/start.sh'
+  - ssh -T $USERNAME@$IP -p $PORT sh /home/shell/start.sh
