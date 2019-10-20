@@ -1,5 +1,6 @@
-package com.github.osinfra.gateway.handler;
+package com.github.osinfra.gateway.locator;
 
+import com.github.osinfra.gateway.filter.GatewayFilterProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.cloud.gateway.route.Route;
@@ -10,6 +11,8 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.lang.NonNull;
 import reactor.core.publisher.Flux;
 
+import java.util.List;
+
 @Slf4j
 public class ApiRouterLocator implements RouteLocator, ApplicationContextAware {
 
@@ -17,7 +20,7 @@ public class ApiRouterLocator implements RouteLocator, ApplicationContextAware {
 
     private RouteLocatorBuilder routeLocatorBuilder;
 
-
+    private List<GatewayFilterProvider> gatewayFilterProviders;
 
     @Override
     public Flux<Route> getRoutes() {

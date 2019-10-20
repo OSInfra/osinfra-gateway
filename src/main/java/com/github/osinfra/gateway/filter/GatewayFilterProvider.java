@@ -1,4 +1,4 @@
-package com.github.osinfra.gateway.handler;
+package com.github.osinfra.gateway.filter;
 
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 
