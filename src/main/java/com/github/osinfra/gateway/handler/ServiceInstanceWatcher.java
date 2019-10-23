@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.alibaba.nacos.NacosServiceInstance;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.util.CollectionUtils;
@@ -59,4 +60,5 @@ public class ServiceInstanceWatcher {
             return !CollectionUtils.isEmpty(addServices) || !CollectionUtils.isEmpty(removeServices);
         }
     }
+
 }

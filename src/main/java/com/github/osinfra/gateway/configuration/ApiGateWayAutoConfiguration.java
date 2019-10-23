@@ -1,6 +1,7 @@
 package com.github.osinfra.gateway.configuration;
 
 import com.github.osinfra.gateway.handler.ApiRegistry;
+import com.github.osinfra.gateway.handler.DiscoveryApiWatcher;
 import com.github.osinfra.gateway.handler.DiscoveryServiceWatcher;
 import com.github.osinfra.gateway.locator.ApiCacheRouterLocator;
 import com.github.osinfra.gateway.locator.ApiRouteLocator;
@@ -25,7 +26,12 @@ public class ApiGateWayAutoConfiguration {
     }
 
     @Bean
-    public DiscoveryServiceWatcher discoveryServiceWatcher(NacosDiscoveryClient nacosDiscoveryClient) {
-        return new DiscoveryServiceWatcher(nacosDiscoveryClient);
+    public DiscoveryApiWatcher apiReloader(ApiRegistry apiRegistry) {
+        return new DiscoveryApiWatcher(apiRegistry);
+    }
+
+    @Bean
+    public DiscoveryServiceWatcher discoveryServiceWatcher(DiscoveryClient discoveryClient) {
+        return new DiscoveryServiceWatcher(discoveryClient);
     }
 }

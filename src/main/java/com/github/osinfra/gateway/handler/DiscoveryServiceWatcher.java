@@ -1,10 +1,10 @@
 package com.github.osinfra.gateway.handler;
 
+import com.github.osinfra.gateway.configuration.ApiGatewayProperties;
 import com.github.osinfra.gateway.exception.ServiceNoAnyInstanceException;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.SmartLifecycle;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
@@ -39,10 +39,13 @@ public class DiscoveryServiceWatcher implements SmartLifecycle {
     private Disposable disposater;
 
     @Resource
-    private ApplicationEventPublisher publisher;
+    private ApiRegistry apiRegistry;
 
     @Resource
-    private ApiRegistry apiRegistry;
+    private ApiGatewayProperties apiGatewayProperties;
+
+    @Resource
+    private DiscoveryApiWatcher discoveryApiWatcher;
 
     public DiscoveryServiceWatcher(DiscoveryClient discoveryClient) {
         this.taskScheduler = getTaskScheduler();
@@ -104,8 +107,8 @@ public class DiscoveryServiceWatcher implements SmartLifecycle {
                                     })
                                     .retryWhen(Retry
                                             .anyOf(IOException.class, ServiceNoAnyInstanceException.class, TimeoutException.class)
-                                            .exponentialBackoff(Duration.ofMillis(500), Duration.ofMillis(5000))
-                                            .retryMax(3))
+                                            .exponentialBackoff(Duration.ofMillis(apiGatewayProperties.getWatcher().getFirstBackoffMillis()), Duration.ofMillis(apiGatewayProperties.getWatcher().getMaxBackoffMills()))
+                                            .retryMax(apiGatewayProperties.getWatcher().getMaxRetryTimes()))
                                     .onErrorResume(throwable -> {
                                         log.warn("Watch service {} error ... error: {}", serviceInstanceSource.getService(), throwable.getMessage());
                                         return Mono.create(MonoSink::success);
@@ -124,7 +127,7 @@ public class DiscoveryServiceWatcher implements SmartLifecycle {
             });
             this.refresh();
             this.watchFuture = this.taskScheduler.scheduleWithFixedDelay(this::refresh,
-                    1000);
+                    5000);
         }
 
     }
@@ -145,13 +148,20 @@ public class DiscoveryServiceWatcher implements SmartLifecycle {
 
     private void refresh() {
         refreshService();
+        List<String> services = discoveryApiWatcher.registryApis()
+                .apply(Flux.fromIterable(apiRegistry.apis()))
+                .collectList()
+                .block();
+        if (!CollectionUtils.isEmpty(services)) {
+            discoveryApiWatcher.publish(services);
+        }
     }
 
     private void refreshService() {
         List<String> services = discoveryClient.getServices().stream()
-//                .filter(s -> !apiGatewayProperties.getWatcher()
-//                        .getExcludeServiceIds()
-//                        .contains(s))
+                .filter(s -> !apiGatewayProperties.getWatcher()
+                        .getExcludeServiceIds()
+                        .contains(s))
                 .distinct()
                 .collect(Collectors.toList());
         if (log.isDebugEnabled()) {
