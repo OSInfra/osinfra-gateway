@@ -19,7 +19,6 @@ import java.util.Set;
 @ConfigurationProperties("apigateway")
 public class ApiGatewayProperties {
 
-    private Swagger swagger = new Swagger();
     private InvokeProperties invoke = new InvokeProperties();
     private TokenVerifyProperties tokenVerify = new TokenVerifyProperties();
     private WatcherProperties watcher = new WatcherProperties();
