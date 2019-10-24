@@ -4,7 +4,6 @@ package com.github.osinfra.gateway.configuration;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import io.swagger.models.Swagger;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.gateway.support.TimeoutException;
