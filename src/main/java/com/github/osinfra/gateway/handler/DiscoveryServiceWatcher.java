@@ -122,7 +122,9 @@ public class DiscoveryServiceWatcher implements SmartLifecycle {
                         servicesChangeListener.onChange(serviceInstanceSources);
                     }
                 } else {
-                    log.debug("ServiceInstances No changed");
+                    if (log.isDebugEnabled()) {
+                        log.debug("ServiceInstances No changed");
+                    }
                 }
             });
             this.refresh();

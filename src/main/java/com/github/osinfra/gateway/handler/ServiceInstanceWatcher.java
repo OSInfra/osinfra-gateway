@@ -8,12 +8,14 @@ import lombok.Getter;
 import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.alibaba.nacos.NacosServiceInstance;
+import org.springframework.cloud.client.DefaultServiceInstance;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.util.CollectionUtils;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class ServiceInstanceWatcher {
@@ -31,9 +33,21 @@ public class ServiceInstanceWatcher {
 
     public synchronized ServiceInstanceSource refresh() {
         List<ServiceInstance> instances = discoveryClient.getInstances(service);
+
         if (CollectionUtils.isEmpty(instances)) {
             throw new ServiceNoAnyInstanceException("No Any Instances of Service " + service, service);
         }
+
+        // NacosServiceInstance 无equals方法
+        instances = instances.stream().map(instance -> new DefaultServiceInstance(
+                instance.getInstanceId(),
+                instance.getServiceId(),
+                instance.getHost(),
+                instance.getPort(),
+                instance.isSecure(),
+                instance.getMetadata()
+        )).collect(Collectors.toList());
+
         List<ServiceInstance> old = serviceInstancesReference.get();
         HashSet<ServiceInstance> oldSet = Sets.newHashSet(old);
         HashSet<ServiceInstance> newSet = Sets.newHashSet(instances);
