@@ -150,13 +150,6 @@ public class DiscoveryServiceWatcher implements SmartLifecycle {
 
     private void refresh() {
         refreshService();
-        List<String> services = discoveryApiWatcher.registryApis()
-                .apply(Flux.fromIterable(apiRegistry.apis()))
-                .collectList()
-                .block();
-        if (!CollectionUtils.isEmpty(services)) {
-            discoveryApiWatcher.publish(services);
-        }
     }
 
     private void refreshService() {
