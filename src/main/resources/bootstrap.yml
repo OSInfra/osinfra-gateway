@@ -2,44 +2,57 @@ spring:
   application:
     name: osinfra-gateway
     version: '@project.version@'
+  zipkin:
+    discoveryClientEnabled: false
   profiles:
     active: debug
   cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+      datasource:
+        ds:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            data-id: ${spring.application.name}-sentinel
+            group-id: DEFAULT_GROUP
+      filter:
+        enabled: true
     config:
       enabled: false # 关闭默认condig
     nacos:
       config:
         file-extension: yaml
-        server-addr: nacos.sharecloud.tech
+        server-addr: 127.0.0.1:8848 #nacos.sharecloud.tech
       discovery:
-        server-addr: nacos.sharecloud.tech
+        server-addr: 127.0.0.1:8848 #nacos.sharecloud.tech
 logging:
   path: ${app.log.path:${user.home}/logs}
   pattern:  # 增加logging.pattern
     console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSSZ}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([%t]){faint} %clr(%logger{39}.%M:%L){cyan} %m%n"
 
-
-apigateway:
-  invoke:
-    enabled: true
-  hystrix:
-    enabled: true
-  fetcher:
-    type: swagger
-    remoteApiUri: http://localhost:8080/v2/api-docs
-  reactor:
-    hooks:
-      enabled: false
-  retryer:
-    enabled: true
-    retries: 3
-    exceptions:
-      - java.io.IOException
-  watcher:
-    excludeServiceIds: ${spring.application.name},consul,configserver,spring-boot-admin,spring-boot-turbine,zipkin,api-gateway,neptune
-    excludePaths:
-      default: /api/ok,/health
-    includePaths: /api/**,/admin/**,/innerapi/**
-    timeout: 5000
-    firstBackoffMillis: 500
-    maxBackoffMills: 5000
+#
+#apigateway:
+#  invoke:
+#    enabled: true
+#  hystrix:
+#    enabled: true
+#  fetcher:
+#    type: swagger
+#    remoteApiUri: http://localhost:8080/v2/api-docs
+#  reactor:
+#    hooks:
+#      enabled: false
+#  retryer:
+#    enabled: true
+#    retries: 3
+#    exceptions:
+#      - java.io.IOException
+#  watcher:
+#    excludeServiceIds: ${spring.application.name},consul,configserver,spring-boot-admin,spring-boot-turbine,zipkin,api-gateway,neptune
+#    excludePaths:
+#      default: /api/ok,/health
+#    includePaths: /api/**,/admin/**,/innerapi/**
+#    timeout: 5000
+#    firstBackoffMillis: 500
+#    maxBackoffMills: 5000
