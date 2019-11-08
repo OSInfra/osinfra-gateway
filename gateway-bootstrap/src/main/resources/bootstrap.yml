@@ -19,27 +19,27 @@ logging:
     console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSSZ}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([%t]){faint} %clr(%logger{39}.%M:%L){cyan} %m%n"
 
 
-#apigateway:
-#  invoke:
-#    enabled: true
-#  hystrix:
-#    enabled: true
-#  fetcher:
-#    type: swagger
-#    remoteApiUri: http://localhost:8080/v2/api-docs
-#  reactor:
-#    hooks:
-#      enabled: false
-#  retryer:
-#    enabled: true
-#    retries: 3
-#    exceptions:
-#      - java.io.IOException
-#  watcher:
-#    excludeServiceIds: ${spring.application.name},consul,configserver,spring-boot-admin,spring-boot-turbine,zipkin,api-gateway,neptune
-#    excludePaths:
-#      default: /api/ok,/health
-#    includePaths: /api/**,/admin/**,/innerapi/**
-#    timeout: 5000
-#    firstBackoffMillis: 500
-#    maxBackoffMills: 5000
+apigateway:
+  invoke:
+    enabled: true
+  hystrix:
+    enabled: true
+  fetcher:
+    type: swagger
+    remoteApiUri: http://localhost:8080/v2/api-docs
+  reactor:
+    hooks:
+      enabled: false
+  retryer:
+    enabled: true
+    retries: 3
+    exceptions:
+      - java.io.IOException
+  watcher:
+    excludeServiceIds: ${spring.application.name},consul,configserver,spring-boot-admin,spring-boot-turbine,zipkin,api-gateway,neptune
+    excludePaths:
+      default: /api/ok,/health
+    includePaths: /api/**,/admin/**,/innerapi/**
+    timeout: 5000
+    firstBackoffMillis: 500
+    maxBackoffMills: 5000

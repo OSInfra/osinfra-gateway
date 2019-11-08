@@ -1,0 +1,74 @@
+spring:
+  application:
+    name: osinfra-example
+    version: '@project.version@'
+    strategy:
+      sentinel:
+        enabled: true
+  profiles:
+    active: debug
+  cloud:
+    config:
+      enabled: false # 关闭默认condig
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: 127.0.0.1:8848 #nacos.sharecloud.tech
+      discovery:
+        server-addr: 127.0.0.1:8848 #nacos.sharecloud.tech
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["*"]
+osinfra:
+  gateway:
+    client:
+      excludePathPrefix: /error
+
+swagger:
+  enabled: true
+  title: ${spring.application.name}
+  description: api接口文档
+  version: ${spring.application.version}
+  license: Apache License, Version 2.0
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfServiceUrl:
+  contact.name: osinfra
+  contact.url:
+  contact.email:
+  base-package: com.github.osinfra
+  base-path: /**
+  exclude-path: /error, /ops/**
+  global-operation-parameters[0]:
+    name: AuthorizeToken
+    description: 用户的token
+    modelRef: string
+    parameterType: header
+    required: false
+
+  # 取消使用默认预定义的响应消息,并使用自定义响应消息
+  apply-default-response-messages: false
+  global-response-message:
+    get[0]:
+      code: 404
+      message: 接口找不到
+      modelRef: string
+    get[1]:
+      code: 500
+      message: 系统错误
+      modelRef: string
+    post[0]:
+      code: 404
+      message: 接口找不到
+      modelRef: string
+    post[1]:
+      code: 500
+      message: 系统错误
+      modelRef: string
+
+
+logging:
+  path: ${app.log.path:${user.home}/logs}
+  pattern:  # 增加logging.pattern
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSSZ}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([%t]){faint} %clr(%logger{39}.%M:%L){cyan} %m%n"
