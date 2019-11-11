@@ -17,6 +17,11 @@ public class Api {
     private String requestPath;
 
     /**
+     * classname + methodname
+     */
+    private String signature;
+    
+    /**
      * need verify token or not
      * default false
      */

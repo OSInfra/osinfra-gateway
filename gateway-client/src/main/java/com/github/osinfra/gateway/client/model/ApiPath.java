@@ -4,12 +4,25 @@ import lombok.Data;
 
 @Data
 public class ApiPath {
+    /**
+     * service identity from config server
+     */
+    private String serviceId;
 
-    private String url;
+    /**
+     * the path of request
+     */
+    private String requestPath;
 
-    // classname + methodname
+    /**
+     * classname + methodname
+     */
     private String signature;
 
-    private boolean needAuthorize;
+    /**
+     * need verify token or not
+     * default false
+     */
+    private boolean requiredVerifyToken = false;
 
 }

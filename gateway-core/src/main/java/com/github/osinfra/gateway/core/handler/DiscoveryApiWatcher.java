@@ -61,7 +61,6 @@ public class DiscoveryApiWatcher implements SmartLifecycle {
 
     private CountDownLatch countDownLatch = new CountDownLatch(1);
 
-
     public DiscoveryApiWatcher(ApiRegistry apiRegistry) {
         this.apiRegistry = apiRegistry;
     }
@@ -84,7 +83,7 @@ public class DiscoveryApiWatcher implements SmartLifecycle {
     @Override
     public void start() {
         if (!isRunning()) {
-            log.info("Initial fetch api-docs...");
+            log.info("Starting fetch apis from all register apps");
             disposable = Flux.<List<ServiceInstanceWatcher.ServiceInstanceSource>>create(fluxSink -> {
                 ServicesChangeListener servicesChangeListener =
                         new ServicesChangeListener() {
@@ -116,7 +115,7 @@ public class DiscoveryApiWatcher implements SmartLifecycle {
                     }
                     publish(strings);
                 } else {
-                    log.info("No apis of services has changed.");
+                    log.info("No apis of services changed.");
                     countDownLatch.countDown();
                 }
             });
@@ -125,7 +124,7 @@ public class DiscoveryApiWatcher implements SmartLifecycle {
             } catch (InterruptedException e) {
                 log.error("DiscoveryApiWatcher interrupted", e);
             }
-            log.info("Initial fetch api-docs done...");
+            log.info("Finish fetch apis from all register apps");
 
         }
     }
@@ -244,6 +243,6 @@ public class DiscoveryApiWatcher implements SmartLifecycle {
 
     @Override
     public int getPhase() {
-        return Ordered.LOWEST_PRECEDENCE - 90;
+        return Ordered.LOWEST_PRECEDENCE - 100;
     }
 }

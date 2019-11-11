@@ -3,7 +3,6 @@ package com.github.osinfra.gateway.core.config;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.gateway.support.TimeoutException;
@@ -11,20 +10,21 @@ import org.springframework.cloud.gateway.support.TimeoutException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 
 @Data
 @ConfigurationProperties("apigateway")
 public class ApiGatewayProperties {
 
-    private InvokeProperties invoke = new InvokeProperties();
-    private TokenVerifyProperties tokenVerify = new TokenVerifyProperties();
     private WatcherProperties watcher = new WatcherProperties();
+
     private FetcherProperties fetcher = new FetcherProperties();
+
     private RetryerProperties retryer = new RetryerProperties();
-    private MetricsProperties metrics = new MetricsProperties();
+
     private FilterProperties filter = new FilterProperties();
+
+    private AuthorizeProperties authorize = new AuthorizeProperties();
 
     @Data
     public static class FilterProperties {
@@ -35,23 +35,6 @@ public class ApiGatewayProperties {
     public static class FetcherProperties {
         private String type = "swagger";
         private String remoteApiUri;
-    }
-
-    @Data
-    public static class MetricsProperties {
-        private List<String> excludePaths = Lists.newArrayList();
-    }
-
-    @Data
-    public static class InvokeProperties {
-        private boolean enabled = false;
-    }
-
-    @Data
-    public static class TokenVerifyProperties {
-        private boolean enabled = false;
-        private List<String> excludePaths = Lists.newArrayList();
-        private Set<String> excludeServiceIds = Sets.newHashSet();
     }
 
     @Data
@@ -79,6 +62,11 @@ public class ApiGatewayProperties {
     public static class RetryerProperties {
         private List<Class> exceptions = Lists.newArrayList(IOException.class, TimeoutException.class);
         private int retries = 3;
+    }
+
+    @Data
+    public static class AuthorizeProperties {
+        private boolean enabled = false;
     }
 
 }

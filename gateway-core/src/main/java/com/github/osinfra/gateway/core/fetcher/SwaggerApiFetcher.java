@@ -22,7 +22,7 @@ public class SwaggerApiFetcher implements ApiHttpFetcher {
     private WebClient webClient;
 
 
-    public SwaggerApiFetcher(WebClient webClient, ApiGatewayProperties properties) {
+    public SwaggerApiFetcher(ApiGatewayProperties properties, WebClient webClient) {
         this.webClient = webClient;
         this.properties = properties;
     }
@@ -37,19 +37,17 @@ public class SwaggerApiFetcher implements ApiHttpFetcher {
                 .bodyToMono(String.class)
                 .map(s -> JSONObject.parseObject(s, Feature.DisableCircularReferenceDetect))
                 .filter(jsonObject -> jsonObject != null && jsonObject.getJSONObject(JSON_KEY_PATHS) != null)
-                .flatMapMany(jsonObject -> {
-                    return Flux.create(fluxSink -> {
-                        JSONObject paths = jsonObject.getJSONObject(JSON_KEY_PATHS);
+                .flatMapMany(jsonObject -> Flux.create(fluxSink -> {
+                    JSONObject paths = jsonObject.getJSONObject(JSON_KEY_PATHS);
 
-                        for (String path : paths.keySet()) {
-                            Api api = new Api();
-                            api.setRequestPath(path);
-                            api.setRequiredVerifyToken(getRequiredVerifyToken(paths.getJSONObject(path)));
-                            fluxSink.next(api);
-                        }
-                        fluxSink.complete();
-                    });
-                });
+                    for (String path : paths.keySet()) {
+                        Api api = new Api();
+                        api.setRequestPath(path);
+                        api.setRequiredVerifyToken(getRequiredVerifyToken(paths.getJSONObject(path)));
+                        fluxSink.next(api);
+                    }
+                    fluxSink.complete();
+                }));
     }
 
     private boolean getRequiredVerifyToken(JSONObject pathJsonObject) {

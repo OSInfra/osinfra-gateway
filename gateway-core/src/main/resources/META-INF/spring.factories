@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.github.osinfra.gateway.core.config.ApiGateWayAutoConfiguration,\
+com.github.osinfra.gateway.core.config.ApiFetcherAutoConfiguration

@@ -3,20 +3,20 @@ jdk: openjdk8
 branches:
   only:
     - master
-env:
-  global:
-    - secure: "NQxqF26stBzXmOBfRsPOzNq2IRilrzepH5JqrlbwECciaa3/I1S20vWfvcjVAZiDNUEsx7gkahtGpUqU82c8hoFX/gLDY/Qafe0LOqlZWNUQQbsxrqQiCiOLqfbC/sXHrm+Ti4pwFc6TmeE5i3AVpP4fFuC61rhbtxPsNrDJRHThF98KsoMsMvUfoJpeQu4iRvIu/zwLE2iRIapEhd5+e+4ehZTVxBtFNcHReCaZ4j2oJIZuYx59Gm8bia3g7ZKPZQ8HFpI9zoc2LJ5gydwK2r2my1dgGHs1qNgHG2Z5x48HPVej1Fnnydu3Rn5IQadVVuY3ObF4JKqwjz6FhiovFckW2fUxbhm2QWOBgX59a3KoAMJA+o2BS40w4JSObS2LmyVpcOVfDvUX0w3Ren1TJpW5cHLUsA5J0pTI1v5HiWu7bgWlr5SIlAZARmI+iIimwW/Z2DL2HUTQ05/esT/gpDsB1fGz2wg9M2j1+jOFRiJz8GC+EDwHERdojREljyJlBOo3cXYcoeCEzvYSYcgaTcQ14s+/SwhiWmK/i0VyL6rtrIPEAgN4LMIrJvLPJG/YDnRjqJ8ia0Ni+mtBqKJVdPiVYUwLzM2AP3ZwLKI+RdclIdkGATO8ldHvcv9f2kvrU5QOsZzHloMCeLKMuww8CU8FScLe2lT20j3sfQJZQM4="
-    - secure: "0FDEyn9r/ZB11ZQ4G0Ev8xZyBlsncbw3F4Lh+u+6ryN8cdCxPFl5aMC/E+yEa1QjTVbLh/GIQbcKJ5s9asDS1v+Nz5zizqtMAbLww/wq2zseN1VP2ToW8j01AXGubtqwdhgicMghYFY9nKyt+yVBWuAV7TNEbu/giD7rruWfPH8s6FMSeCWZp5G/aXrPbkO/ixe+g/Gjo+gDKx0CkhIoZ/eTlnxSzYZvuRE/FuQWy/lcXT4b4eTVg1bEpZiC1xI5S959R47d+OHU6r7bDiTur3l+t1tvB+zk4eCxIevACYqYSQv6/KBxr7PxBzXXPBJTIanfmhNYmgxId6IwZ3FasuiQ8bfQJ3VCE53Ppx2jMh78sL5Y+DEx87AiUxvd7a7Xfc3zpKHiR+3dqyOL00UKww1HiT4B5G3jqnkZ0hXkiQBopmO7eNjwXyZS9RBlpL+CtguKUvE/LFoJVEvNgX5esGNdu1nA2+zhCRgDapZ44t7G6u4FQcHYH15S2koSfwuaukkV/58eRWQ0q1RcDE8W85WWaGUI9FLl3I4h5bB7Uy03BtKqzZVymIPEWPi8+/un1mtrcd7QIGb2Z48s4qbJl5H/rF0NTEO2GMEIFV/l9ajwhKdnSubxB1z/f5ID1L7EsHW+6OUzImB1ZcqSJEJwtF8BJGGkizRY6Ca3wKvrN1k="
-    - secure: "I+niGatsyubE6sZ9PRLTyIZstmplB16PoIUjFuCZ9hw/IqeJgWFwWu6Wi2K06g7G++TG5jLyft3Qszyl/6IKO2nTdLZooFf9Ui9dpCOTh//LVuwjndxdIsEBrva7x04r4/oyVDn07dz9EkwCPzyVcDPKTwlgOjSvqxhir8G44vH8n7dIOZXpUms5tgZpRwb99OfAA1FcuT1+Nxc/BOfB7Phk7HuMTOTDS/AjrAk2PqcW3KTtBC+33YfBNhVe3ZzEHBHdd9/pXePXJUgSw44oxbPoXLy9Sc8mLA4IFY2uke8Ua2fotxiIHyR24PNROPhMNCaMNlND6F5tXIav/Y6AEorsBQ+8OonMFniAoumxcfEsDOxLyJ5g8V5cJDTk1pnUt2I1e9odaw2WUB1OiTIm100aAsBaP2hSjrM+Q2FWVMOrpEGUIF+A8XBta5Hws2Pa5/1eFXxG59mrjD6Emkmh/xlJI0rY+dQzSAt6UoO3ZOrj1QQsvPYDMjp1MlkV+3hZkLGOBhHu4ldPjVw5rmYmAiKKpbnt+SL2CisfyLqMmbFvLSU3DBKE8gIP/aVXU2qJVe2yxVCO8meD8aJPMTewl6C1bXNfDCGaFZjxnLwPE4fJU5RSHzLXYWGOS+Pwb4Tdscje4qIlMCjVgj6ofQymxFz/3EmKF0Kuftzx0h65dfQ="
+#env:
+#  global:
+#    - secure: "NQxqF26stBzXmOBfRsPOzNq2IRilrzepH5JqrlbwECciaa3/I1S20vWfvcjVAZiDNUEsx7gkahtGpUqU82c8hoFX/gLDY/Qafe0LOqlZWNUQQbsxrqQiCiOLqfbC/sXHrm+Ti4pwFc6TmeE5i3AVpP4fFuC61rhbtxPsNrDJRHThF98KsoMsMvUfoJpeQu4iRvIu/zwLE2iRIapEhd5+e+4ehZTVxBtFNcHReCaZ4j2oJIZuYx59Gm8bia3g7ZKPZQ8HFpI9zoc2LJ5gydwK2r2my1dgGHs1qNgHG2Z5x48HPVej1Fnnydu3Rn5IQadVVuY3ObF4JKqwjz6FhiovFckW2fUxbhm2QWOBgX59a3KoAMJA+o2BS40w4JSObS2LmyVpcOVfDvUX0w3Ren1TJpW5cHLUsA5J0pTI1v5HiWu7bgWlr5SIlAZARmI+iIimwW/Z2DL2HUTQ05/esT/gpDsB1fGz2wg9M2j1+jOFRiJz8GC+EDwHERdojREljyJlBOo3cXYcoeCEzvYSYcgaTcQ14s+/SwhiWmK/i0VyL6rtrIPEAgN4LMIrJvLPJG/YDnRjqJ8ia0Ni+mtBqKJVdPiVYUwLzM2AP3ZwLKI+RdclIdkGATO8ldHvcv9f2kvrU5QOsZzHloMCeLKMuww8CU8FScLe2lT20j3sfQJZQM4="
+#    - secure: "0FDEyn9r/ZB11ZQ4G0Ev8xZyBlsncbw3F4Lh+u+6ryN8cdCxPFl5aMC/E+yEa1QjTVbLh/GIQbcKJ5s9asDS1v+Nz5zizqtMAbLww/wq2zseN1VP2ToW8j01AXGubtqwdhgicMghYFY9nKyt+yVBWuAV7TNEbu/giD7rruWfPH8s6FMSeCWZp5G/aXrPbkO/ixe+g/Gjo+gDKx0CkhIoZ/eTlnxSzYZvuRE/FuQWy/lcXT4b4eTVg1bEpZiC1xI5S959R47d+OHU6r7bDiTur3l+t1tvB+zk4eCxIevACYqYSQv6/KBxr7PxBzXXPBJTIanfmhNYmgxId6IwZ3FasuiQ8bfQJ3VCE53Ppx2jMh78sL5Y+DEx87AiUxvd7a7Xfc3zpKHiR+3dqyOL00UKww1HiT4B5G3jqnkZ0hXkiQBopmO7eNjwXyZS9RBlpL+CtguKUvE/LFoJVEvNgX5esGNdu1nA2+zhCRgDapZ44t7G6u4FQcHYH15S2koSfwuaukkV/58eRWQ0q1RcDE8W85WWaGUI9FLl3I4h5bB7Uy03BtKqzZVymIPEWPi8+/un1mtrcd7QIGb2Z48s4qbJl5H/rF0NTEO2GMEIFV/l9ajwhKdnSubxB1z/f5ID1L7EsHW+6OUzImB1ZcqSJEJwtF8BJGGkizRY6Ca3wKvrN1k="
+#    - secure: "I+niGatsyubE6sZ9PRLTyIZstmplB16PoIUjFuCZ9hw/IqeJgWFwWu6Wi2K06g7G++TG5jLyft3Qszyl/6IKO2nTdLZooFf9Ui9dpCOTh//LVuwjndxdIsEBrva7x04r4/oyVDn07dz9EkwCPzyVcDPKTwlgOjSvqxhir8G44vH8n7dIOZXpUms5tgZpRwb99OfAA1FcuT1+Nxc/BOfB7Phk7HuMTOTDS/AjrAk2PqcW3KTtBC+33YfBNhVe3ZzEHBHdd9/pXePXJUgSw44oxbPoXLy9Sc8mLA4IFY2uke8Ua2fotxiIHyR24PNROPhMNCaMNlND6F5tXIav/Y6AEorsBQ+8OonMFniAoumxcfEsDOxLyJ5g8V5cJDTk1pnUt2I1e9odaw2WUB1OiTIm100aAsBaP2hSjrM+Q2FWVMOrpEGUIF+A8XBta5Hws2Pa5/1eFXxG59mrjD6Emkmh/xlJI0rY+dQzSAt6UoO3ZOrj1QQsvPYDMjp1MlkV+3hZkLGOBhHu4ldPjVw5rmYmAiKKpbnt+SL2CisfyLqMmbFvLSU3DBKE8gIP/aVXU2qJVe2yxVCO8meD8aJPMTewl6C1bXNfDCGaFZjxnLwPE4fJU5RSHzLXYWGOS+Pwb4Tdscje4qIlMCjVgj6ofQymxFz/3EmKF0Kuftzx0h65dfQ="
+#
+#before_install:
+#  - openssl aes-256-cbc -K $encrypted_45e2ee6d25eb_key -iv $encrypted_45e2ee6d25eb_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
+#  - chmod 600 ~/.ssh/id_rsa
+#addons:
+#  ssh_known_hosts: $IP:$PORT
 
-before_install:
-  - openssl aes-256-cbc -K $encrypted_45e2ee6d25eb_key -iv $encrypted_45e2ee6d25eb_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
-  - chmod 600 ~/.ssh/id_rsa
-addons:
-  ssh_known_hosts: $IP:$PORT
+script:
+  - mvn clean install -Dmaven.test.skip=true -U
 
-#script:
-#  - mvn clean install -Dmaven.test.skip=true -U
-
-after_success:
-  - ssh -p $PORT $USERNAME@$IP -o StrictHostKeyChecking=no  '/home/shell/start.sh osinfra-gateway'
+#after_success:
+#  - ssh -p $PORT $USERNAME@$IP -o StrictHostKeyChecking=no  '/home/shell/start.sh osinfra-gateway'

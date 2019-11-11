@@ -23,6 +23,7 @@ import java.util.Map;
 @Endpoint(id = "api-gateway")
 public class ApiDiscoveryEndpoint {
 
+
     @Resource
     private RequestMappingHandlerMapping requestMappingHandlerMapping;
 
@@ -71,9 +72,9 @@ public class ApiDiscoveryEndpoint {
                 }
 
                 ApiPath apiPath = new ApiPath();
-                apiPath.setUrl(url);
+                apiPath.setRequestPath(url);
                 apiPath.setSignature(signature);
-                apiPath.setNeedAuthorize(needAuthorize);
+                apiPath.setRequiredVerifyToken(needAuthorize);
                 apiPaths.add(apiPath);
 
             }

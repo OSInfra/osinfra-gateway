@@ -6,7 +6,7 @@
         <module>gateway-core</module>
         <module>gateway-bootstrap</module>
         <module>gateway-client</module>
-        <module>osinfra-gateway-example</module>
+        <module>gateway-client-example</module>
     </modules>
 
     <parent>
