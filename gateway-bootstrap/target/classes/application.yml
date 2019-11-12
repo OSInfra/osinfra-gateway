@@ -1,5 +1,0 @@
-server:
-  port: 8130
-spring:
-  main:
-    banner-mode: "off"
